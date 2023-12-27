@@ -15,4 +15,9 @@ class NetworkKontakRepository(
 ) : KontakRepository {
     /** Fetches list of kontak from kontakApi */
     override suspend fun getKontak(): List<Kontak> = kontakApiService.getKontak()
+
+    // insert kontak
+    override suspend fun insertKontak(kontak: Kontak) {
+        kontakApiService.insertKontak(kontak)
+    }
 }
