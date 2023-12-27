@@ -44,7 +44,6 @@ import com.example.consumerestapi.ui.PenyediaViewModel
 import com.example.consumerestapi.ui.TopAppBarKontak
 import com.example.consumerestapi.ui.home.viewmodel.HomeViewModel
 import com.example.consumerestapi.ui.home.viewmodel.KontakUIState
-import com.example.consumerestapi.ui.home.viewmodel.KontakUiState
 
 object DestinasiHome : DestinasiNavigasi {
     override val route = "home"
