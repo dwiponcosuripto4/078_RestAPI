@@ -32,20 +32,30 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.consumerestapi.R
 import com.example.consumerestapi.model.Kontak
+import com.example.consumerestapi.ui.home.viewmodel.KontakUIState
 import com.example.consumerestapi.ui.home.viewmodel.KontakUiState
 
 @Composable
-fun HomeScreen(
-    kontakUiState: KontakUiState, retryAction: () -> Unit, modifier: Modifier = Modifier
-) {
+fun HomeStatus(
+    kontakUiState: KontakUIState,
+    retryAction: () -> Unit,
+    modifier: Modifier = Modifier,
+    onDeleteClick: (Kontak) -> Unit = {},
+    onDetailClick: (Int) -> Unit) {
 
     when (kontakUiState) {
-        is KontakUiState.Loading -> OnLoading(modifier = modifier.fillMaxSize())
-        is KontakUiState.Success -> KontakLayout(
-            kontak = kontakUiState.kontak, modifier = modifier.fillMaxWidth()
+        is KontakUIState.Loading -> OnLoading(modifier = modifier.fillMaxSize())
+        is KontakUIState.Success -> KontakLayout(
+            kontak = kontakUiState.kontak, modifier = modifier.fillMaxWidth(),
+            onDetailClick = {
+                onDetailClick(it.id)
+            },
+            onDeleteClick = {
+                onDeleteClick(it)
+            }
         )
 
-        is KontakUiState.Error -> OnError(retryAction, modifier = modifier.fillMaxSize())
+        is KontakUIState.Error -> OnError(retryAction, modifier = modifier.fillMaxSize())
     }
 
 }
