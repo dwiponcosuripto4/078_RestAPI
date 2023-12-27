@@ -6,6 +6,7 @@ import com.example.consumerestapi.network.KontakService
 interface KontakRepository {
     /** Fetches list of kontak from kontakApi */
     suspend fun getKontak(): List<Kontak>
+    suspend fun insertKontak(kontak: Kontak)
     suspend fun deleteKontak(id: Int)
 }
 

@@ -19,18 +19,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.consumerestapi.R
 import com.example.consumerestapi.navigation.DestinasiNavigasi
 import com.example.consumerestapi.ui.PenyediaViewModel
 import com.example.consumerestapi.ui.TopAppBarKontak
-import com.example.consumerestapi.ui.home.viewmodel.InserViewModel
-import com.example.consumerestapi.ui.home.viewmodel.InsertUiEvent
-import com.example.consumerestapi.ui.home.viewmodel.InsertUiState
+import com.example.consumerestapi.ui.kontak.viewmodel.InserViewModel
+import com.example.consumerestapi.ui.kontak.viewmodel.InsertUiEvent
+import com.example.consumerestapi.ui.kontak.viewmodel.InsertUiState
 import kotlinx.coroutines.launch
 
 object DestinasiEntry : DestinasiNavigasi {

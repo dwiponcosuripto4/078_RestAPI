@@ -1,4 +1,4 @@
-package com.example.consumerestapi.ui.home.viewmodel
+package com.example.consumerestapi.ui.kontak.viewmodel
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -6,8 +6,10 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.consumerestapi.model.Kontak
+import com.example.consumerestapi.navigation.DestinasiNavigasi
 import com.example.consumerestapi.repository.KontakRepository
 import kotlinx.coroutines.launch
+
 
 class InserViewModel(private val kontakRepository: KontakRepository) : ViewModel() {
 
