@@ -6,6 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Kontak(
     val id: Int,
+    @SerialName(value = "nama")
     val name: String,
     @SerialName(value = "email")
     val alamat: String,
