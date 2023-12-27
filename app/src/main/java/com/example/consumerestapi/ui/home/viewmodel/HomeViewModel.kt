@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.consumerestapi.model.Kontak
 import com.example.consumerestapi.repository.KontakRepository
-import com.example.consumerestapi.repository.NetworkKontakRepository
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException

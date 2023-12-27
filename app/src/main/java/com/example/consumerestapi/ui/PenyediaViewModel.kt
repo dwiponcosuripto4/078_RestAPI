@@ -1,6 +1,5 @@
 package com.example.consumerestapi.ui
 
-import android.text.Editable.Factory
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
