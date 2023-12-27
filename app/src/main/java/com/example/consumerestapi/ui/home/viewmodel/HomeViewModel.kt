@@ -18,7 +18,7 @@ sealed class KontakUIState {
 }
 
 class HomeViewModel(private val kontakRepository: KontakRepository) : ViewModel() {
-    var kontakUiState: KontakUIState by mutableStateOf(KontakUIState.Loading)
+    var kontakUIState: KontakUIState by mutableStateOf(KontakUIState.Loading)
         private set
 
     init {
@@ -27,8 +27,8 @@ class HomeViewModel(private val kontakRepository: KontakRepository) : ViewModel(
 
     fun getKontak() {
         viewModelScope.launch {
-            kontakUiState = KontakUIState.Loading
-            kontakUiState = try {
+            kontakUIState = KontakUIState.Loading
+            kontakUIState = try {
                 KontakUIState.Success(kontakRepository.getKontak())
             } catch (e: IOException) {
                 KontakUIState.Error
