@@ -11,14 +11,14 @@ import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
 
-sealed class KontakUiState {
-    data class Success(val kontak: List<Kontak>) : KontakUiState()
-    object Error : KontakUiState()
-    object Loading : KontakUiState()
+sealed class KontakUIState {
+    data class Success(val kontak: List<Kontak>) : KontakUIState()
+    object Error : KontakUIState()
+    object Loading : KontakUIState()
 }
 
 class HomeViewModel(private val kontakRepository: KontakRepository) : ViewModel() {
-    var kontakUiState: KontakUiState by mutableStateOf(KontakUiState.Loading)
+    var kontakUiState: KontakUIState by mutableStateOf(KontakUIState.Loading)
         private set
 
     init {
@@ -27,13 +27,24 @@ class HomeViewModel(private val kontakRepository: KontakRepository) : ViewModel(
 
     fun getKontak() {
         viewModelScope.launch {
-            kontakUiState = KontakUiState.Loading
+            kontakUiState = KontakUIState.Loading
             kontakUiState = try {
-                KontakUiState.Success(kontakRepository.getKontak())
+                KontakUIState.Success(kontakRepository.getKontak())
             } catch (e: IOException) {
-                KontakUiState.Error
+                KontakUIState.Error
             } catch (e: HttpException) {
-                KontakUiState.Error
+                KontakUIState.Error
+            }
+        }
+    }
+    fun deleteKontak(id: Int) {
+        viewModelScope.launch {
+            try {
+                kontakRepository.deleteKontak(id)
+            } catch (e: IOException) {
+                KontakUIState.Error
+            } catch (e: HttpException) {
+                KontakUIState.Error
             }
         }
     }
