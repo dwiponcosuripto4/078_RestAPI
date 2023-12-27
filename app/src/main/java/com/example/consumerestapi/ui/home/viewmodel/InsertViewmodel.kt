@@ -2,11 +2,11 @@ package com.example.consumerestapi.ui.home.viewmodel
 
 import com.example.consumerestapi.model.Kontak
 
-data class InsertViewmodel(
+data class InsertUiEvent(
     val id: Int = 0,
-    val nama: String = 0,
+    val nama: String = "",
     val alamat: String = "",
-    val nohp : String = ""
+    val nohp : String = "",
 )
 
 fun InsertUiEvent.toKontak() : Kontak = Kontak(

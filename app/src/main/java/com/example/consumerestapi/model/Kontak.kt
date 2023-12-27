@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 data class Kontak(
     val id: Int,
     @SerialName(value = "nama")
-    val name: String,
+    val nama: String,
     @SerialName(value = "email")
     val alamat: String,
     @SerialName(value = "nohp")
