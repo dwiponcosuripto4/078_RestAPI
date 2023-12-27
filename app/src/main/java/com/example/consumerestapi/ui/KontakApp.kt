@@ -27,13 +27,10 @@ import com.example.consumerestapi.ui.home.viewmodel.HomeViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun KontakApp(
-    homeViewModel: HomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
-
 ) {
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
     Scaffold (
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-        topBar = { TopAppBar(scrollBehavior = scrollBehavior) }
     ){
         Surface (
             modifier = Modifier
