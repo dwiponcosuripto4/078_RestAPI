@@ -67,11 +67,11 @@ fun OnLoading(modifier: Modifier = Modifier) {
  */
 @Composable
 fun OnError(retryAction: () -> Unit, modifier: Modifier = Modifier) {
-    Column (
+    Column(
         modifier = modifier,
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
-    ){
+    ) {
         Image(
             painter = painterResource(id = R.drawable.ic_connection_error), contentDescription = ""
         )
@@ -83,23 +83,34 @@ fun OnError(retryAction: () -> Unit, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun KontakLayout(kontak: List<Kontak>, modifier: Modifier = Modifier) {
+fun KontakLayout(
+    kontak: List<Kontak>,
+    modifier: Modifier = Modifier,
+    onDetailClick: (Kontak) -> Unit,
+    onDeleteClick: (Kontak) -> Unit = {}
+) {
     LazyColumn(
         modifier = modifier,
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         items(kontak) { kontak ->
-            KontakCard(kontak = kontak, modifier = Modifier
-                .fillMaxWidth()
-                .clickable {  })
+            KontakCard(
+                kontak = kontak,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { onDetailClick(kontak) },
+                onDeleteClick = {
+                    onDeleteClick(kontak)
+                }
+            )
         }
     }
 
 }
 
 @Composable
-fun KontakCard (
+fun KontakCard(
     kontak: Kontak,
     onDeleteClick: (Kontak) -> Unit = {},
     modifier: Modifier = Modifier
@@ -130,7 +141,8 @@ fun KontakCard (
                     style = MaterialTheme.typography.titleMedium
                 )
             }
-            Row(modifier = Modifier.fillMaxWidth(),
+            Row(
+                modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
@@ -138,7 +150,7 @@ fun KontakCard (
                     style = MaterialTheme.typography.titleMedium
                 )
                 Spacer(Modifier.weight(1f))
-                IconButton(onClick = {onDeleteClick(kontak) }) {
+                IconButton(onClick = { onDeleteClick(kontak) }) {
                     Icon(
                         imageVector = Icons.Default.Delete,
                         contentDescription = null,
